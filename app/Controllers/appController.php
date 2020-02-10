@@ -4,7 +4,7 @@
 class appController
 {
     public function index(){
-        re
+        return jsonView(['a'=>'hello']);
         return view('wellcome');
     }
 }
