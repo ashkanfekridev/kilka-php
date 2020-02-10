@@ -1,10 +1,13 @@
 <?php
 
+use App\DB;
 
 class appController
 {
     public function index(){
-        return jsonView(['a'=>'hello']);
-        return view('wellcome');
+        $db = new DB();
+        $db->query('SELECT * FROM users');
+        $users = $db->getAll();
+        return print_r(jsonView($users));
     }
 }

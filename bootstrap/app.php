@@ -1,5 +1,6 @@
 <?php
     require __DIR__ . '/../vendor/autoload.php';
+    require __DIR__ . '/../src/helper.php';
     use App\Router;
     use App\Request;
     $router = new Router();
