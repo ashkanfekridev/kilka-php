@@ -20,12 +20,12 @@ class DB
         $this->result = $this->handler->query($query);
     }
 
-    public function get(){
+    public function first(){
         $this->result->execute();
         return $this->result->fetch();
     }
 
-    public function getAll(){
+    public function get (){
         $this->result->execute();
         return $this->result->fetchAll();
     }
