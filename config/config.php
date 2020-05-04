@@ -5,6 +5,9 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'kilka_php');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-//database env
+
+//view env
+define('VIEW_DIR', __DIR__ . '/../resorces/views/');
+
 
 
