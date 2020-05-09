@@ -8,7 +8,7 @@ require_once __DIR__ . '/../config/config.php';
 use App\Router;
 use App\Request;
 
-//try {
+try {
 
     $router = new Router();
     $request = new Request();
@@ -17,6 +17,6 @@ use App\Request;
 
     $router->runRouter($request->uri(), $request->method());
 
-//} catch (Exception $e) {
-//    echo $e->getMessage();
-//}
+} catch (Exception $e) {
+   echo $e->getMessage();
+}
