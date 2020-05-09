@@ -2,6 +2,7 @@
 
 
 namespace App;
+use Exception;
 
 
 class Router
@@ -11,35 +12,56 @@ class Router
         'POST' => []
     ];
 
-    public function get($uri, $controller)
+
+    private $controllerNameSpace;
+    private $madelWareNameSpace;
+
+
+    public function __construct($controllerNameSpace = "App\\Controller", $madelWareNameSpace = "")
     {
-        $this->routes['GET'][$uri] = $controller;
+        $this->controllerNameSpace = $controllerNameSpace;
+        $this->madelWareNameSpace = $madelWareNameSpace;
     }
 
-    public function post($uri, $controller)
+
+    public function addRoute($type, $uri, $action)
     {
-        $this->routes['POST'][$uri] = $controller;
+        $uri = trim($uri, '/');
+        $this->routes[$type][$uri] = $action;
+    }
+
+
+    public function get($uri, $action)
+    {
+        $this->addRoute('GET', $uri, $action);
+    }
+
+    public function post($uri, $action)
+    {
+        $this->addRoute('POST', $uri, $action);
     }
 
 
     public function runRouter($url, $method)
     {
         if (array_key_exists($url, $this->routes[$method])) {
-            $controller = explode('@', $this->routes[$method][$url])[0];
-            $action = explode('@', $this->routes[$method][$url])[1];
-            return $this->callAction($controller, $action);
+            return $this->callAction($this->routes[$method][$url]);
         }
+        throw new Exception("page not find!");
+
     }
 
-    private function callAction($controller, $action)
+    private function callAction($action)
     {
-
-        if (! method_exists($controller, $action)) {
-            return print_r("action not found!");
+        if (is_callable($action)) {
+            return call_user_func($action);
+        } elseif(is_array($action = explode('@', $action))) {
+            if (method_exists($action[0], $action[1])) {
+                return call_user_func([$action[0], $action[1]]);
+            }
         }
-        $controller = new $controller();
-        return $controller->$action();
+        throw new Exception("action fired!");
+
+
     }
-
-
 }

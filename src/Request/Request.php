@@ -7,7 +7,7 @@ namespace App;
 class Request
 {
     public function uri(){
-        return $_SERVER['REQUEST_URI'];
+        return trim($_SERVER['REQUEST_URI'], '/');
     }
 
     public function method(){
