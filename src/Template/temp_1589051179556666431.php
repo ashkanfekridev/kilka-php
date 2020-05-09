@@ -22,11 +22,11 @@
     </style>
 </head>
 <body>
-    <p>{{ TITLE }}</p>
-    <p>{{ text }}</p>
+    <p><?php echo $TITLE; ?></p>
+    <p><?php echo $text; ?></p>
 
 
-    <div>@foreach($users as $user)<p>{{ user->name }}</p>@endforeach
+    <div><?php foreach(($users as $user)<p><?php echo $user->name; ?></p><?php } ?>){ ?>
     </div>
 </body>
 </html>
