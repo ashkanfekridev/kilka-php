@@ -7,7 +7,12 @@ class appController
     public function index(){
         $template = new \App\Template();
 
-        return print_r($template->render('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem']));
+        $users = [
+            ["name"=>"ashkan"],
+            ["name"=>"joe"],
+        ];
+
+        return print_r($template->render('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]));
 
         return print_r(\App\Response::view('wellcome', ['a' => 'b']));
 
