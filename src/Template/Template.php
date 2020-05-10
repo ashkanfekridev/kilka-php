@@ -13,24 +13,24 @@ class Template
         $view = $this->templates_path . ltrim($view, '/') . '.php';
         $view = file_get_contents($view);
 //        echo = {{ var }}
-        preg_match_all('/{{ (.+?) }}/', $view, $vars);
+        preg_match_all('/{{(.+)}}/', $view, $vars);
+//        return Response::json($vars);
+//        return var_dump($vars);
         foreach ($vars[1] as $var) {
-            $view = str_replace('{{ ' . $var . ' }}', "<?php echo $" . $var . "; ?>", $view);
+            $view = str_replace('{{' . $var . '}}', "<?php echo $" . trim($var, ' ') . "; ?>", $view);
         }
+//        return;
 ////        foreach = @foreach()
         preg_match_all('/@foreach(.+)/', $view, $foreach);
 
+
         foreach ($foreach[1] as $for) {
-            $view = str_replace('@foreach' . $for, "<?php foreach(" . $for . "){ ?>", $view);
+            $view = str_replace('@foreach' . $for, "<?php foreach" . $for . "{ ?>", $view);
         }
 
 //endforeach
 
-//        preg_match_all('/@endforeach/', $view, $endforeach);
-//        return print_r($endforeach);
-//        foreach ($endforeach[1] as $endfor) {
-            $view = str_replace('@endforeach', "<?php } ?>", $view);
-//        }
+        $view = str_replace('@endforeach', "<?php } ?>", $view);
 
 
         $temp_view = __DIR__ . '/temp_' . time() . rand() . '.php';
