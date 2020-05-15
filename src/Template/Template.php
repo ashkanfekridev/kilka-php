@@ -12,6 +12,9 @@ class Template
     public function render($view, $data = [])
     {
         $view = $this->templates_path . ltrim($view, '/') . '.php';
+        if (!file_exists($view)){
+            throw new \Exception("file not find!");
+        }
         $view = file_get_contents($view);
 
 // caching
