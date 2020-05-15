@@ -9,6 +9,9 @@ class Template
     protected $templates_path = __DIR__ . "/../../resorces/views/";
     protected $temp_dir = __DIR__ . '/temp/';
 
+    protected $components = [];
+
+
     public function render($view, $data = [])
     {
         $view = $this->templates_path . ltrim($view, '/') . '.php';
@@ -19,7 +22,7 @@ class Template
         $temp_view = __DIR__ . '/temp/' . $view_hash . '.php';
         $temp_dir = $this->temp_dir;
         $temp_files = scandir($temp_dir);
-        
+
         if (array_search($view_hash . '.php', $temp_files)) {
             extract($data);
             ob_start();
@@ -35,7 +38,8 @@ class Template
                 $view = str_replace('{{' . $var . '}}', "<?php echo $" . trim($var, ' ') . "; ?>", $view);
             }
 //        return;
-////        foreach = @foreach()
+////        foreach = @foreach() -t public
+///
             preg_match_all('/@foreach(.+)/', $view, $foreach);
 
 
@@ -56,5 +60,22 @@ class Template
 //        unlink($temp_view);
         }
     }
+
+
+    public function view($view)
+    {
+        return $this->components;
+        return $view;
+    }
+
+
+    public function addComponent($pattern, callable $callback)
+    {
+        $this->components[] = [
+            'pattern' => $pattern,
+            'callback' => $callback
+        ];
+    }
+
 
 }
