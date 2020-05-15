@@ -2,6 +2,7 @@
 
 
 namespace App;
+
 use Exception;
 
 
@@ -17,7 +18,7 @@ class Router
     private $madelWareNameSpace;
 
 
-    public function __construct($controllerNameSpace = "App\\Controller", $madelWareNameSpace = "")
+    public function __construct($controllerNameSpace, $madelWareNameSpace = "")
     {
         $this->controllerNameSpace = $controllerNameSpace;
         $this->madelWareNameSpace = $madelWareNameSpace;
@@ -45,21 +46,33 @@ class Router
     public function runRouter($url, $method)
     {
         if (array_key_exists($url, $this->routes[$method])) {
-            return $this->callAction($this->routes[$method][$url]);
-        }
-        throw new Exception("page not find!");
+            $response = $this->callAction($this->routes[$method][$url]);
 
+            if (is_array($response)){
+                return print(Response::json($response));
+            }
+
+            return $response;
+
+        }
+            throw new Exception("page not find!");
     }
 
     private function callAction($action)
     {
         if (is_callable($action)) {
             return call_user_func($action);
-        } elseif(is_array($action = explode('@', $action))) {
-            if (method_exists($action[0], $action[1])) {
-                return call_user_func([$action[0], $action[1]]);
+        } else {
+            $action = explode('@', $action);
+
+            if (method_exists($this->controllerNameSpace . '\\' . $action[0], $action[1])) {
+                return call_user_func([$this->controllerNameSpace . '\\' . $action[0], $action[1]]);
+            } else {
+                throw new Exception("در ارتباط با کنترلر مشکلی وجود دارد!");
             }
         }
+
+
         throw new Exception("action fired!");
 
 
