@@ -10,10 +10,10 @@ use App\Request;
 
 try {
 
-    $router = new Router();
+    $router = new Router('App\\Http\\Controllers');
     $request = new Request();
 
-    require_once __DIR__ . '/../app/http/routes/web.php';
+    require_once __DIR__ . '/../app/Http/routes/web.php';
 
     $router->runRouter($request->uri(), $request->method());
 

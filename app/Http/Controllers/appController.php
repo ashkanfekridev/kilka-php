@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use App\DB;
 
 class appController
@@ -12,7 +14,7 @@ class appController
             ["name"=>"joe"],
         ];
 
-        return print_r($template->render('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]));
+        return $template->render('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]);
 
         return print_r(\App\Response::view('wellcome', ['a' => 'b']));
 
