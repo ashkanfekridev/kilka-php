@@ -3,3 +3,6 @@ vendor/
 node_modules/
 ./yarn.lock
 
+#
+
+storage/cache/views/
