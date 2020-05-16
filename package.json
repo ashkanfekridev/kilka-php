@@ -1,0 +1,14 @@
+{
+  "name": "kilka-php",
+  "version": "1.0.0",
+  "main": "kilka.js",
+  "repository": "https://github.com/ashkanfekridev/kilka-php.git",
+  "author": "ashkan fekri <ashkanfekridev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  },
+  "scripts": {
+    "sass": "node-sass -w -r -c ./resorces/assets/scss/ -o ./public/css/"
+  }
+}
