@@ -18,6 +18,6 @@ class loginController
 
 //        return $users;
 
-        return $template->render('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]);
+        return Response::view('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]);
     }
 }

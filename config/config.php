@@ -8,6 +8,7 @@ define('DB_PASS', '');
 
 //view env
 define('VIEW_DIR', __DIR__ . '/../resorces/views/');
+define('VIEW_TEMP_DIR', __DIR__ . '/../storage/cache/views/');
 
 
 
