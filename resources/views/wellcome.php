@@ -28,12 +28,12 @@
     </style>
 </head>
 <body>
-    <p>{{TITLE}}</p>
-    <p>{{ text }}</p>
+    <p>{{$TITLE}}</p>
+    <p>{{ $text }}</p>
 
     <div>
         @foreach($users as $user)
-        <p>{{ user['name'] }}</p>
+        <p>{{ $user['name'] }}</p>
         @endforeach
     </div>
 </body>

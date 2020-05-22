@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\DB;
+use App\Response;
 
 class appController
 {
     public function index(){
-        $template = new \App\Template();
 
         $users = [
             ["name"=>"ashkan"],
             ["name"=>"joe"],
         ];
 
-        return $template->render('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]);
+        return Response::view('wellcome', ['TITLE' => "WELLCOME", "text"=>'loremloremloremloremloremloremlorem', "users"=>$users]);
 
         return print_r(\App\Response::view('wellcome', ['a' => 'b']));
 

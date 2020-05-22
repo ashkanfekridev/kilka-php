@@ -37,50 +37,53 @@ class Response
         $temp_dir = VIEW_TEMP_DIR;
         $temp_view = $temp_dir . $view_hash . '.php';
 
-//        if (file_exists($temp_view)) {
-//            extract($data);
-//            ob_start();
-//            return require_once $temp_view;
-//            echo ob_get_clean();
-//        } else {
+        if (file_exists($temp_view)) {
+            extract($data);
+            ob_start();
+            return require_once $temp_view;
+            echo ob_get_clean();
+        } else {
 
 //            include
-        preg_match_all('/@include(.+)/', $view, $includes);
+            preg_match_all('/@include(.+)/', $view, $includes);
 
-        foreach ($includes[1] as $include) {
-            $include_trim = trim($include, "('");
-            $include_trim = trim($include_trim, "')");
-            $view = str_replace('@include' . $include, "<?php require_once('" . VIEW_DIR . $include_trim . ".php'); ?>", $view);
-        }
+            foreach ($includes[1] as $include) {
+                $include_trim = trim($include, "('");
+                $include_trim = trim($include_trim, "')");
+                $view = str_replace('@include' . $include, "<?php require_once('" . VIEW_DIR . $include_trim . ".php'); ?>", $view);
+            }
 
-        //        echo = {{ var }}
-        preg_match_all('/{{(.+)}}/', $view, $vars);
-        foreach ($vars[1] as $var) {
-            $view = str_replace('{{' . $var . '}}', "<?php echo $" . trim($var, ' ') . "; ?>", $view);
-        }
-//        return;
+//{{ $var }}
+            $view = str_replace('{{', "<?php echo ", $view);
+            $view = str_replace('}}', "; ?>", $view);
+/**
+ * <?php script ?>
+ **/
+            $view = str_replace('{?', "<?php ", $view);
+            $view = str_replace('?}', " ?>", $view);
+//            return print_r($view);
 ////        foreach = @foreach()
-        preg_match_all('/@foreach(.+)/', $view, $foreach);
+            preg_match_all('/@foreach(.+)/', $view, $foreach);
 
 
-        foreach ($foreach[1] as $for) {
-            $view = str_replace('@foreach' . $for, "<?php foreach" . $for . "{ ?>", $view);
-        }
+            foreach ($foreach[1] as $for) {
+                $view = str_replace('@foreach' . $for, "<?php foreach" . $for . "{ ?>", $view);
+            }
 
 //endforeach
 
-        $view = str_replace('@endforeach', "<?php } ?>", $view);
+            $view = str_replace('@endforeach', "<?php } ?>", $view);
 
 
-        file_put_contents($temp_view, preg_replace('/\/+/', '/', $view));
-        extract($data);
-        ob_start();
-        require $temp_view;
-        echo ob_get_clean();
-//        unlink($temp_view);
+            file_put_contents($temp_view, preg_replace('/\/+/', '/', $view));
+            extract($data);
+            ob_start();
+            require $temp_view;
+            echo ob_get_clean();
+            unlink($temp_view);
+        }
+
     }
-
-//    }
 
 
 }
