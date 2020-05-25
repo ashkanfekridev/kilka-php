@@ -1,2 +1,12 @@
-@import "./variables.scss";
-@import "~bootstrap";
+//@import "./assets/bootstrap-reboot.css";
+@import "./assets/bootstrap-grid.css";
+
+@import "./koli-css/kilka";
+
+//fonts
+@import "assets/font/shabnam/shabnam.css";
+*{
+  font-family: Shabnam;
+
+}
+//fonts

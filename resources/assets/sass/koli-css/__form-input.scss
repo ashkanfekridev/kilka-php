@@ -1,0 +1,22 @@
+[class*="form-input-"]{
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: 2px solid #eee;
+  transition: 0.25s;
+}
+
+[class*="form-input-"]:hover{
+  border: 2px solid #ccc;
+}
+
+[class*="form-input-"]:focus{
+  border: 2px solid #99ddff;
+}
+
+
+
+.form-input-text-block{
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+}

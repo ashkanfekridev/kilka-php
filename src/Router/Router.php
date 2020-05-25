@@ -16,12 +16,16 @@ class Router
 
     private $controllerNameSpace;
     private $madelWareNameSpace;
+    private $notFindPage;
 
 
-    public function __construct($controllerNameSpace, $madelWareNameSpace = "")
+
+    public function __construct($controllerNameSpace, $madelWareNameSpace = "", $notFindPage=__DIR__ . "/../../resources/views/wellcome.php")
     {
         $this->controllerNameSpace = $controllerNameSpace;
         $this->madelWareNameSpace = $madelWareNameSpace;
+        $this->notFindPage = $notFindPage;
+
     }
 
 
@@ -55,7 +59,9 @@ class Router
             return $response;
 
         }
-            throw new Exception("page not find!");
+
+        return include_once $this->notFindPage;
+//            throw new Exception("page not find!");
     }
 
     private function callAction($action)

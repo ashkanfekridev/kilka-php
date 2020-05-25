@@ -9,5 +9,4 @@ $router->get('/hello', function (){
 
 
 //auth
-$router->get('login', 'loginController@index');
 

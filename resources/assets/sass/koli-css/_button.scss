@@ -1,0 +1,27 @@
+button {
+  border: none;
+  font-size: 18px;
+  padding: 8px 15px;
+}
+
+
+.btn {
+  border: 2px solid #eee;
+  border-radius: 8px;
+  background: $white;
+  color: $primary;
+  transition: 0.25s;
+}
+
+.btn:hover{
+  background: #333333;
+  color: #ffffff;
+}
+
+
+
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
