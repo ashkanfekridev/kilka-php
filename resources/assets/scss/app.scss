@@ -1,2 +1,11 @@
-// Bootstrap
-@import './scss/bootstrap';
+//font
+@import "./iranyekan.css";
+
+//reset
+@import './reset';
+
+//grid
+@import "./grid";
+
+//app-layout
+@import "./_header";

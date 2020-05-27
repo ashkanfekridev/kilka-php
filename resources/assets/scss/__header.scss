@@ -1,0 +1,18 @@
+header#header{
+  background: #fff;
+  padding: 15px 0;
+}
+
+ul.nav-bar{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul.nav-bar>li>a{
+  color: #444;
+  padding: 8px 15px;
+  display: block;
+}
+
+ul.nav-bar>li>a:hover{
+  color: #111;
+}

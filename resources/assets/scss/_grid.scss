@@ -1,0 +1,55 @@
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+
+//flex-wrap
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.flex-nowrap{
+  flex-wrap: nowrap;
+}
+
+
+
+//col
+
+.col-1{
+
+}
+
+
+
+
+// all
+.container {
+  margin: auto auto;
+}
+//mobile
+@media (min-width: 600px) {
+  .container {
+    width: 600px;
+  }
+}
+//tablet
+@media (min-width: 800px) {
+  .container {
+    width: 800px;
+  }
+}
+//desktop
+@media (min-width: 1100px) {
+  .container {
+    width: 1100px;
+  }
+}

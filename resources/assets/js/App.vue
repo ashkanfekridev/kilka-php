@@ -1,13 +1,14 @@
 <template>
     <div id="app">
         <div id="app-wapper">
-            <router-view></router-view>
+            <Header></Header>
         </div>
     </div>
 </template>
 
 <script>
 
+    import Header from "./Components/App/Header";
     export default {
         name: "App",
         data() {
@@ -16,6 +17,7 @@
             }
         },
         components: {
+            Header
         },
         mounted() {
         }

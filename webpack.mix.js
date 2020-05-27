@@ -3,3 +3,4 @@ mix.options({ processCssUrls: false });
 
 mix.js("./resources/assets/js/app.js", './public/js')
        .sass('./resources/assets/scss/app.scss', './public/css');
+mix.copyDirectory('./resources/assets/fonts', 'public/fonts');

@@ -1,0 +1,35 @@
+*,html,body{
+  margin: 0;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+body{
+  background: #eee;
+  direction: rtl;
+  font-family: iranyekan;
+}
+
+
+/*
+//+-------------------------------+
+//|                               |
+//|           tags                |
+//|                               |
+//+-------------------------------+
+ */
+
+
+//a
+
+a{
+  text-decoration: none;
+  color: #2D9CDB;
+}
+
+//ul
+ul{
+  list-style: none;
+}
+
